@@ -1,5 +1,15 @@
 #include "Alumno1.h"
 
+void stringtochar(char arr[], string palabra, int n)
+{
+    for (int i=0; i<n; i++) {
+        if (i<palabra.size())
+            arr[i] = palabra[i];
+        else
+            arr[i] = ' ';
+    }
+}
+
 class FixedRecord1
 {
     string nombre;
@@ -72,5 +82,29 @@ public:
     {
         vector<Alumno1> temp = load();
         return temp[pos];
+    }
+
+    void Test()
+    {
+        FixedRecord1 fr(nombre);
+
+        Alumno1 a{};
+        string codigo = "22315";
+        stringtochar(a.codigo, codigo, 5);
+
+        string nombre = "Alonso";
+        stringtochar(a.nombre, nombre, 11);
+
+        string apellidos = "Mondragon Aliaga";
+        stringtochar(a.apellidos, apellidos, 20);
+
+        string carrera = "Medicina";
+        stringtochar(a.carrera, carrera, 15);
+
+        fr.add(a);
+
+        Alumno1 pruebaA1 = fr.readRecord(2);
+        cout << "* Imprimiendo alumno pos 2: *" << endl;
+        cout << pruebaA1;
     }
 };
